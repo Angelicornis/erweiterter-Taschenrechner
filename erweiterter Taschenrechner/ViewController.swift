@@ -19,7 +19,34 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    var anzeigeWährendBerechnung = ""
+    var zahlenstring2 = ""
 
+    @IBOutlet weak var anzeigeEinheit: UILabel!
+    @IBOutlet weak var ergebnissAnzeige: UILabel!
 
+    @IBAction func zahl1() {
+        anzeigeWährendBerechnung += "1"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func zahl2() {
+        anzeigeWährendBerechnung += "2"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func zahl3() {
+        anzeigeWährendBerechnung += "3"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func aktionPlus() {
+        anzeigeWährendBerechnung += "+"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+
+    @IBAction func aktionErgebnis() {
+        ergebnissAnzeige.text = "Ergebniss: "
+    }
 }
 
