@@ -19,41 +19,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    var anzeigeWährendBerechnung = ""
-    var zahlenstring2 = ""
-
-    @IBOutlet weak var anzeigeEinheit: UILabel!
-    @IBOutlet weak var ergebnissAnzeige: UILabel!
-
-    @IBAction func zahl1() {
-        anzeigeWährendBerechnung += "1"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
-    }
     
-    @IBAction func zahl2() {
-        anzeigeWährendBerechnung += "2"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
-    }
-    
-    @IBAction func zahl3() {
-        anzeigeWährendBerechnung += "3"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
-    }
-    
-    @IBAction func aktionPlus() {
-        anzeigeWährendBerechnung += "+"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
-    }
-
-    @IBAction func aktionMal() {
-        anzeigeWährendBerechnung += "x"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
-    }
-    
-    @IBAction func aktionGeteilt() {
-        anzeigeWährendBerechnung += ":"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
-    }
     
     func ArrayWertAusgabe<T>(vonWelchemArray ausgewähltesArray: [T], index: Int) ->T? {
         var ergebnis: T?
@@ -96,6 +62,55 @@ class ViewController: UIViewController {
     }
     
     
+    var anzeigeWährendBerechnung = ""
+    var zahlenstring2 = ""
+
+    @IBOutlet weak var anzeigeEinheit: UILabel!
+    @IBOutlet weak var ergebnissAnzeige: UILabel!
+
+    @IBAction func zahl1() {
+        anzeigeWährendBerechnung += "1"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func zahl2() {
+        anzeigeWährendBerechnung += "2"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func zahl3() {
+        anzeigeWährendBerechnung += "3"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func aktionPlus() {
+        anzeigeWährendBerechnung += "+"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+
+    @IBAction func aktionMal() {
+        anzeigeWährendBerechnung += "x"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func aktionGeteilt() {
+        anzeigeWährendBerechnung += ":"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    @IBAction func aktionLöscheLetzteZahl() {
+        var anzeigeWährendBerechnungArray = [String]()
+        for c in anzeigeWährendBerechnung{
+            println(c)
+            anzeigeWährendBerechnungArray.append("\(c)")
+        }
+        anzeigeWährendBerechnungArray.removeLast()
+        anzeigeWährendBerechnung = ""
+        for nummer in 0..<(anzeigeWährendBerechnungArray.count) {
+            anzeigeWährendBerechnung += (ArrayWertAusgabe(vonWelchemArray: anzeigeWährendBerechnungArray, index: nummer))!
+        }
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+
     
     @IBAction func aktionErgebnis() {
         
