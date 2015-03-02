@@ -31,36 +31,6 @@ class ViewController: UIViewController {
         return ergebnis
     }
     
-    func parser(#stringZuParsen: String, mitWelchemSeparator separator: String, berechne:Bool = false) ->[String] {
-        var stringZuParsenGeparst = stringZuParsen.componentsSeparatedByString(separator)
-        if berechne {
-            var temp = 0
-            var ergebnis: Int?
-            var wert = ArrayWertAusgabe(vonWelchemArray: stringZuParsenGeparst, index: 0)
-            //var wertInt = wert!.toInt()
-            for wertInt in stringZuParsenGeparst {
-                switch separator {
-                case "x":
-                    if ergebnis == nil {
-                        ergebnis = wert!.toInt()!
-                    } else {
-                        ergebnis! *= wertInt.toInt()!
-                    }
-                case ":":
-                    if ergebnis == nil {
-                        ergebnis = wert!.toInt()!
-                    } else {
-                        ergebnis! /= wertInt.toInt()!
-                    }
-                default: ergebnis! = 0
-                }
-            }
-            return ["\(ergebnis!)"]
-        } else {
-            return stringZuParsenGeparst
-        }
-    }
-    
     
     var anzeigeWährendBerechnung = ""
     var zahlenstring2 = ""
@@ -100,13 +70,23 @@ class ViewController: UIViewController {
     @IBAction func aktionLöscheLetzteZahl() {
         var anzeigeWährendBerechnungArray = [String]()
         for c in anzeigeWährendBerechnung{
-            println(c)
             anzeigeWährendBerechnungArray.append("\(c)")
         }
-        anzeigeWährendBerechnungArray.removeLast()
-        anzeigeWährendBerechnung = ""
-        for nummer in 0..<(anzeigeWährendBerechnungArray.count) {
-            anzeigeWährendBerechnung += (ArrayWertAusgabe(vonWelchemArray: anzeigeWährendBerechnungArray, index: nummer))!
+
+        if anzeigeWährendBerechnungArray.count == 0 {
+            anzeigeWährendBerechnung = "0"
+
+        } else if anzeigeWährendBerechnungArray.valueOf(0) != "0" {
+            anzeigeWährendBerechnungArray.removeLast()
+            if anzeigeWährendBerechnungArray.count == 0 {
+                anzeigeWährendBerechnung = "0"
+                
+            } else {
+                anzeigeWährendBerechnung = ""
+                for nummer in 0..<(anzeigeWährendBerechnungArray.count) {
+                    anzeigeWährendBerechnung += (ArrayWertAusgabe(vonWelchemArray: anzeigeWährendBerechnungArray, index: nummer))!
+                }
+            }
         }
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
@@ -114,45 +94,9 @@ class ViewController: UIViewController {
     
     @IBAction func aktionErgebnis() {
         
-
-        var arrayOfWords = parser(stringZuParsen: anzeigeWährendBerechnung, mitWelchemSeparator: "+")
-        println("Ergebniss1: \n \(arrayOfWords)\n")
-        
-        
-        var arrayOfWords2 = [String]()
-        var temparray = [Int]()
-        for (index1, wort1) in enumerate(arrayOfWords) {
-            for c in wort1 {
-                if c == "x" {
-                    println ("String vor dem zweiten Parsen * \n \(wort1)\n")
-                    arrayOfWords2 = (parser(stringZuParsen: wort1, mitWelchemSeparator: "x", berechne: true))
-                    temparray.append(index1)
-                    for i in arrayOfWords2 {
-                        arrayOfWords.removeAtIndex(index1)
-                        arrayOfWords.insert(i, atIndex: index1)
-                    }
-                } else if c == ":" {
-                    println ("String vor dem zweiten Parsen : \n \(wort1)\n")
-                    arrayOfWords2 = (parser(stringZuParsen: wort1, mitWelchemSeparator: ":", berechne: true))
-                    temparray.append(index1)
-                    for i in arrayOfWords2 {
-                        arrayOfWords.removeAtIndex(index1)
-                        arrayOfWords.insert(i, atIndex: index1)
-                    }
-                }
-            }
-        }
-        println("Ergebniss2: \n \(arrayOfWords)\n")
-        
-        println("Das letzte Vorergebnis Lautet: \n \(arrayOfWords)\n")
-        var ergebnis = 0
-        for i in arrayOfWords {
-            ergebnis += i.toInt()!
-        }
+        var ergebnis = berechnung(StringZumBerechnen: anzeigeWährendBerechnung)
+        anzeigeEinheit.text = String(ergebnis)
         println("Das Ergebnis Lautet: \n \(ergebnis)\n")
-        
-        ergebnissAnzeige.text = "Ergebnis: \(ergebnis)"
-    }
-    
+    }    
 }
 
