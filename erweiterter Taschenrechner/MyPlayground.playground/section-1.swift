@@ -4,10 +4,10 @@ import Cocoa
 import Foundation
 
 extension Array {
-    mutating func addierValue(mitStartwert value: T){
+    mutating func addierValue(mitStartwert valueF: Int){
         var temp = 0
         for (key, value) in enumerate(self) {
-            temp = (value as Int) + 1
+            temp = (value as Int) + valueF
             self.removeAtIndex(key)
             self.insert(temp as T, atIndex: key)
         }
@@ -29,7 +29,7 @@ extension Array {
     }
 }
 
-var anzeigeWährendBerechnung = "120+30-50-20"
+var anzeigeWährendBerechnung = "120+30-50-20-10+30"
 
 func parser(#stringZuParsen: String, mitWelchemSeparator separator: String, berechne:Bool = false) ->[String] {
     var stringZuParsenGeparst = stringZuParsen.componentsSeparatedByString(separator)
@@ -65,10 +65,13 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
     println("Ergebniss1: \n \(arrayOfWords)\n")
 
 
+    
+    
+    
+    
     var arrayOfWords2 = [String]()
     var parameter: [Int] = []
     for (var index1, wort1) in enumerate(arrayOfWords) {
-    //    for c in wort1 {
             var temp = false
             for  c in wort1 {
                 if c == "-" {
@@ -78,20 +81,31 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
         
             if temp {
                 var index2 = index1
-                println("Index1: \(index1)")
-                //            println ("String vor dem zweiten Parsen - \n \(wort1)\n")
                 arrayOfWords2 = (parser(stringZuParsen: wort1, mitWelchemSeparator: "-"))
                 arrayOfWords.removeAtIndex(index1)
-                for i in arrayOfWords2 {
-                    arrayOfWords.insert(i, atIndex: index2)
+                for (key, value) in enumerate(arrayOfWords2) {
+                    arrayOfWords.insert(value, atIndex: index2)
                     index2 += 1
+                    if key != 0 {
+                        parameter.append(key)
+                    }
                 }
-                parameter.append(index1)
                 parameter.addierValue(mitStartwert: 1)
-    //        }
         }
     }
-    parameter = [2, 3]
+    println("Die Parameter Lauten:\(parameter)")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //println ("String nach minus - \n \((arrayOfWords))\n")
     for (index1, wort1) in enumerate(arrayOfWords) {
         for c in wort1 {
@@ -121,25 +135,24 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
     for (key, value) in enumerate(arrayOfWords) {
         var status = true
         var value2: Int = 0
-        println(key)
+//        println(key)
         
         
         for (key2, value2) in enumerate(parameter) {
             if key == value2 {
                 ergebnis = ergebnis - value.toInt()!
                 parameter.removeAtIndex(key2)
-                println(" 1 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
+//                println(" 1 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
                 
                 status = false
             }
         }
         if status {
             ergebnis = ergebnis + value.toInt()!
-            println(" 2 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
+//            println(" 2 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
             
         }
-        println(" \(parameter)")
-        println("\n")
+
     }
     //anzeigeEinheit.text = String(ergebnis)
     println("Das Ergebnis Lautet: \n \(ergebnis)\n")

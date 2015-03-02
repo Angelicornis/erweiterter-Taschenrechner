@@ -75,6 +75,9 @@
                                 <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="aktionMinus" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PGx-xd-Yzq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jb2-rj-2cH">
                                 <rect key="frame" x="156" y="152" width="64" height="64"/>

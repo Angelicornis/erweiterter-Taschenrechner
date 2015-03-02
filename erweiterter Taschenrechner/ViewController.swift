@@ -58,6 +58,11 @@ class ViewController: UIViewController {
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
 
+    @IBAction func aktionMinus() {
+        anzeigeWährendBerechnung += "-"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
     @IBAction func aktionMal() {
         anzeigeWährendBerechnung += "x"
         anzeigeEinheit.text = anzeigeWährendBerechnung

@@ -25,10 +25,10 @@ extension Array {
         }
         return nil
     }
-    mutating func addierValue(mitStartwert value: T){
+    mutating func addierValue(mitStartwert valueF: Int){
         var temp = 0
         for (key, value) in enumerate(self) {
-            temp = (value as Int) + 1
+            temp = (value as Int) + valueF
             self.removeAtIndex(key)
             self.insert(temp as T, atIndex: key)
         }
