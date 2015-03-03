@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E207DBFA1AA633E400A72385 /* Berechne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207DBF91AA633E400A72385 /* Berechne.swift */; };
+		E207DBFC1AA6341E00A72385 /* löscheLetzteEingabe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207DBFB1AA6341E00A72385 /* löscheLetzteEingabe.swift */; };
+		E207DBFE1AA6391A00A72385 /* kleinereFunktionen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207DBFD1AA6391A00A72385 /* kleinereFunktionen.swift */; };
 		E2A011901A9A7E5C00D75C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A0118F1A9A7E5C00D75C26 /* AppDelegate.swift */; };
 		E2A011921A9A7E5C00D75C26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A011911A9A7E5C00D75C26 /* ViewController.swift */; };
 		E2A011951A9A7E5C00D75C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2A011931A9A7E5C00D75C26 /* Main.storyboard */; };
@@ -14,7 +17,6 @@
 		E2A0119A1A9A7E5C00D75C26 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A011981A9A7E5C00D75C26 /* LaunchScreen.xib */; };
 		E2A011A61A9A7E5C00D75C26 /* erweiterter_TaschenrechnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A011A51A9A7E5C00D75C26 /* erweiterter_TaschenrechnerTests.swift */; };
 		E2A7B85D1A9D2D4100531649 /* Extension : func.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7B85C1A9D2D4100531649 /* Extension : func.swift */; };
-		E2D35B681AA51BB700466529 /* Berechne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D35B671AA51BB700466529 /* Berechne.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E207DBF91AA633E400A72385 /* Berechne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Berechne.swift; sourceTree = "<group>"; };
+		E207DBFB1AA6341E00A72385 /* löscheLetzteEingabe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "löscheLetzteEingabe.swift"; sourceTree = "<group>"; };
+		E207DBFD1AA6391A00A72385 /* kleinereFunktionen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kleinereFunktionen.swift; sourceTree = "<group>"; };
 		E251E1951A9EAC6100EB98C0 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		E2A0118A1A9A7E5C00D75C26 /* erweiterter Taschenrechner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "erweiterter Taschenrechner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A0118E1A9A7E5C00D75C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,7 +45,6 @@
 		E2A011A41A9A7E5C00D75C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2A011A51A9A7E5C00D75C26 /* erweiterter_TaschenrechnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = erweiterter_TaschenrechnerTests.swift; sourceTree = "<group>"; };
 		E2A7B85C1A9D2D4100531649 /* Extension : func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension : func.swift"; sourceTree = "<group>"; };
-		E2D35B671AA51BB700466529 /* Berechne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Berechne.swift; path = ../Berechne.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +86,12 @@
 		E2A0118C1A9A7E5C00D75C26 /* erweiterter Taschenrechner */ = {
 			isa = PBXGroup;
 			children = (
-				E2D35B671AA51BB700466529 /* Berechne.swift */,
+				E207DBF91AA633E400A72385 /* Berechne.swift */,
 				E2A0118F1A9A7E5C00D75C26 /* AppDelegate.swift */,
 				E2A7B85C1A9D2D4100531649 /* Extension : func.swift */,
 				E2A011911A9A7E5C00D75C26 /* ViewController.swift */,
+				E207DBFD1AA6391A00A72385 /* kleinereFunktionen.swift */,
+				E207DBFB1AA6341E00A72385 /* löscheLetzteEingabe.swift */,
 				E2A011931A9A7E5C00D75C26 /* Main.storyboard */,
 				E2A011961A9A7E5C00D75C26 /* Images.xcassets */,
 				E2A011981A9A7E5C00D75C26 /* LaunchScreen.xib */,
@@ -221,9 +227,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2A7B85D1A9D2D4100531649 /* Extension : func.swift in Sources */,
-				E2D35B681AA51BB700466529 /* Berechne.swift in Sources */,
+				E207DBFE1AA6391A00A72385 /* kleinereFunktionen.swift in Sources */,
 				E2A011921A9A7E5C00D75C26 /* ViewController.swift in Sources */,
 				E2A011901A9A7E5C00D75C26 /* AppDelegate.swift in Sources */,
+				E207DBFA1AA633E400A72385 /* Berechne.swift in Sources */,
+				E207DBFC1AA6341E00A72385 /* löscheLetzteEingabe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

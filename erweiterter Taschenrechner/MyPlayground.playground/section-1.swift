@@ -27,10 +27,8 @@ extension Array {
             atIndex += 1
         }
     }
+    
 }
-
-var anzeigeWährendBerechnung = "120+30-50-20-10+30"
-
 func parser(#stringZuParsen: String, mitWelchemSeparator separator: String, berechne:Bool = false) ->[String] {
     var stringZuParsenGeparst = stringZuParsen.componentsSeparatedByString(separator)
     if berechne {
@@ -59,54 +57,34 @@ func parser(#stringZuParsen: String, mitWelchemSeparator separator: String, bere
         return stringZuParsenGeparst
     }
 }
-
 func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
     var arrayOfWords = parser(stringZuParsen: anzeigeWährendBerechnung, mitWelchemSeparator: "+")
-    println("Ergebniss1: \n \(arrayOfWords)\n")
-
-
-    
-    
-    
     
     var arrayOfWords2 = [String]()
     var parameter: [Int] = []
     for (var index1, wort1) in enumerate(arrayOfWords) {
-            var temp = false
-            for  c in wort1 {
-                if c == "-" {
-                    temp = true
+        var temp = false
+        for  c in wort1 {
+            if c == "-" {
+                temp = true
+            }
+        }
+        
+        if temp {
+            var index2 = index1
+            arrayOfWords2 = (parser(stringZuParsen: wort1, mitWelchemSeparator: "-"))
+            arrayOfWords.removeAtIndex(index1)
+            for (key, value) in enumerate(arrayOfWords2) {
+                arrayOfWords.insert(value, atIndex: index2)
+                index2 += 1
+                if key != 0 {
+                    parameter.append(key)
                 }
             }
-        
-            if temp {
-                var index2 = index1
-                arrayOfWords2 = (parser(stringZuParsen: wort1, mitWelchemSeparator: "-"))
-                arrayOfWords.removeAtIndex(index1)
-                for (key, value) in enumerate(arrayOfWords2) {
-                    arrayOfWords.insert(value, atIndex: index2)
-                    index2 += 1
-                    if key != 0 {
-                        parameter.append(key)
-                    }
-                }
-                parameter.addierValue(mitStartwert: 1)
+            parameter.addierValue(mitStartwert: 1)
         }
     }
-    println("Die Parameter Lauten:\(parameter)")
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //println ("String nach minus - \n \((arrayOfWords))\n")
     for (index1, wort1) in enumerate(arrayOfWords) {
         for c in wort1 {
             if c == "x" {
@@ -126,36 +104,85 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
             }
         }
     }
-    println("Ergebniss2: \n \(arrayOfWords)\n")
-
-    //println("Das letzte Vorergebnis Lautet: \n \(arrayOfWords)\n")
     var ergebnis = 0
-    println("Parameter: \(parameter)")
-
     for (key, value) in enumerate(arrayOfWords) {
         var status = true
         var value2: Int = 0
-//        println(key)
+        //        println(key)
         
         
         for (key2, value2) in enumerate(parameter) {
             if key == value2 {
                 ergebnis = ergebnis - value.toInt()!
                 parameter.removeAtIndex(key2)
-//                println(" 1 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
+                //                println(" 1 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
                 
                 status = false
             }
         }
         if status {
             ergebnis = ergebnis + value.toInt()!
-//            println(" 2 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
+            //            println(" 2 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
             
         }
-
+        
     }
-    //anzeigeEinheit.text = String(ergebnis)
-    println("Das Ergebnis Lautet: \n \(ergebnis)\n")
     return ergebnis
 }
+
+
+var anzeigeWährendBerechnung = "2x5x(8+2)x(10+5)"
+println("Startwert\n \(anzeigeWährendBerechnung) \n")
+
+var a = parser(stringZuParsen: anzeigeWährendBerechnung, mitWelchemSeparator: "(")
+//println("Startwert\n \(a)")
+a.removeAtIndex(0)
+//println("Nach Entfernen\n \(a)")
+
+var b: [String] = []
+for (key, value) in enumerate(a) {
+    b += (parser(stringZuParsen: value, mitWelchemSeparator: ")"))
+    b.removeAtIndex(key + 1)
+}
+//println("Nach Parsen \n \(b)")
+
+
+for (key, value) in enumerate(b) {
+    var zwischenergebnis = 0
+    zwischenergebnis = berechnung(StringZumBerechnen: value)
+    b[key] = "\(zwischenergebnis)"
+}
+
+
+a = parser(stringZuParsen: anzeigeWährendBerechnung, mitWelchemSeparator: "(")
+var key1 = 0
+for (var key, value) in enumerate(a) {
+    println("key: \(key1)")
+    println(key1)
+    var aA = parser(stringZuParsen: value, mitWelchemSeparator: ")")
+    if aA.count > 1 {
+        aA[0] = "\(berechnung(StringZumBerechnen: aA[0]))"
+    }
+    println("aA: \(aA)")
+    a.replace(aA, atIndex: key1)
+    if aA.count > 1 {
+        for number in 0..<aA.count {
+            key1 += 1
+        }
+    } else {
+        key1 += 1
+    }
+    println(key1)
+    println("replace: \(a) \n \n")
+}
+anzeigeWährendBerechnung = ""
+for (key, value) in enumerate(a) {
+    anzeigeWährendBerechnung += value
+    println(anzeigeWährendBerechnung)
+}
+
 berechnung(StringZumBerechnen: anzeigeWährendBerechnung)
+
+
+
+//berechnung(StringZumBerechnen: anzeigeWährendBerechnung)

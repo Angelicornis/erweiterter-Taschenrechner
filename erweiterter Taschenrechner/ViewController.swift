@@ -39,17 +39,77 @@ class ViewController: UIViewController {
     @IBOutlet weak var ergebnissAnzeige: UILabel!
 
     @IBAction func zahl1() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
         anzeigeWährendBerechnung += "1"
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
     
     @IBAction func zahl2() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
         anzeigeWährendBerechnung += "2"
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
     
     @IBAction func zahl3() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
         anzeigeWährendBerechnung += "3"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func zahl4() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
+        anzeigeWährendBerechnung += "4"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+
+    @IBAction func zahl5() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
+        anzeigeWährendBerechnung += "5"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    @IBAction func zahl6() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
+        anzeigeWährendBerechnung += "6"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    @IBAction func zahl7() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
+        anzeigeWährendBerechnung += "7"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    @IBAction func zahl8() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
+        anzeigeWährendBerechnung += "8"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    @IBAction func zahl9() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
+        anzeigeWährendBerechnung += "9"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    @IBAction func zahl0() {
+        if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
+            anzeigeWährendBerechnung = ""
+        }
+        anzeigeWährendBerechnung += "0"
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
     
@@ -73,26 +133,7 @@ class ViewController: UIViewController {
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
     @IBAction func aktionLöscheLetzteZahl() {
-        var anzeigeWährendBerechnungArray = [String]()
-        for c in anzeigeWährendBerechnung{
-            anzeigeWährendBerechnungArray.append("\(c)")
-        }
-
-        if anzeigeWährendBerechnungArray.count == 0 {
-            anzeigeWährendBerechnung = "0"
-
-        } else if anzeigeWährendBerechnungArray.valueOf(0) != "0" {
-            anzeigeWährendBerechnungArray.removeLast()
-            if anzeigeWährendBerechnungArray.count == 0 {
-                anzeigeWährendBerechnung = "0"
-                
-            } else {
-                anzeigeWährendBerechnung = ""
-                for nummer in 0..<(anzeigeWährendBerechnungArray.count) {
-                    anzeigeWährendBerechnung += (ArrayWertAusgabe(vonWelchemArray: anzeigeWährendBerechnungArray, index: nummer))!
-                }
-            }
-        }
+        anzeigeWährendBerechnung = löscheLetzteEingabe(vonWelchemString: anzeigeWährendBerechnung)
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
 
@@ -100,7 +141,7 @@ class ViewController: UIViewController {
     @IBAction func aktionErgebnis() {
         
         var ergebnis = berechnung(StringZumBerechnen: anzeigeWährendBerechnung)
-        anzeigeEinheit.text = String(ergebnis)
+        ergebnissAnzeige.text = String(ergebnis)
         println("Das Ergebnis Lautet: \n \(ergebnis)\n")
     }    
 }
