@@ -108,21 +108,21 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
     for (key, value) in enumerate(arrayOfWords) {
         var status = true
         var value2: Int = 0
-        //        println(key)
+                println(key)
         
         
         for (key2, value2) in enumerate(parameter) {
             if key == value2 {
                 ergebnis = ergebnis - value.toInt()!
                 parameter.removeAtIndex(key2)
-                //                println(" 1 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
+                                println(" 1 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
                 
                 status = false
             }
         }
         if status {
             ergebnis = ergebnis + value.toInt()!
-            //            println(" 2 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
+                        println(" 2 - \n Ergebnis: \(ergebnis)\n Value: \(value)")
             
         }
         
@@ -131,58 +131,74 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
 }
 
 
-var anzeigeWährendBerechnung = "2x5x(8+2)x(10+5)"
-println("Startwert\n \(anzeigeWährendBerechnung) \n")
-
-var a = parser(stringZuParsen: anzeigeWährendBerechnung, mitWelchemSeparator: "(")
-//println("Startwert\n \(a)")
-a.removeAtIndex(0)
-//println("Nach Entfernen\n \(a)")
-
-var b: [String] = []
-for (key, value) in enumerate(a) {
-    b += (parser(stringZuParsen: value, mitWelchemSeparator: ")"))
-    b.removeAtIndex(key + 1)
-}
-//println("Nach Parsen \n \(b)")
+var ursprünglicherString123 = "2+10-5"
 
 
-for (key, value) in enumerate(b) {
-    var zwischenergebnis = 0
-    zwischenergebnis = berechnung(StringZumBerechnen: value)
-    b[key] = "\(zwischenergebnis)"
-}
-
-
-a = parser(stringZuParsen: anzeigeWährendBerechnung, mitWelchemSeparator: "(")
-var key1 = 0
-for (var key, value) in enumerate(a) {
-    println("key: \(key1)")
-    println(key1)
-    var aA = parser(stringZuParsen: value, mitWelchemSeparator: ")")
-    if aA.count > 1 {
-        aA[0] = "\(berechnung(StringZumBerechnen: aA[0]))"
-    }
-    println("aA: \(aA)")
-    a.replace(aA, atIndex: key1)
-    if aA.count > 1 {
-        for number in 0..<aA.count {
-            key1 += 1
-        }
-    } else {
-        key1 += 1
-    }
-    println(key1)
-    println("replace: \(a) \n \n")
-}
-anzeigeWährendBerechnung = ""
-for (key, value) in enumerate(a) {
-    anzeigeWährendBerechnung += value
-    println(anzeigeWährendBerechnung)
-}
-
-berechnung(StringZumBerechnen: anzeigeWährendBerechnung)
+berechnung(StringZumBerechnen: ursprünglicherString123)
 
 
 
-//berechnung(StringZumBerechnen: anzeigeWährendBerechnung)
+
+
+
+
+
+
+
+
+
+
+
+//func klammern (var ursprünglicherString: String) -> Int {
+//    println("Startwert\n \(ursprünglicherString) \n")
+//    
+//    var a = parser(stringZuParsen: ursprünglicherString, mitWelchemSeparator: "(")
+//    //println("Startwert\n \(a)")
+//    a.removeAtIndex(0)
+//    //println("Nach Entfernen\n \(a)")
+//    
+//    var b: [String] = []
+//    for (key, value) in enumerate(a) {
+//        b += (parser(stringZuParsen: value, mitWelchemSeparator: ")"))
+//        b.removeAtIndex(key + 1)
+//    }
+//    //println("Nach Parsen \n \(b)")
+//    
+//    
+//    for (key, value) in enumerate(b) {
+//        var zwischenergebnis = 0
+//        zwischenergebnis = berechnung(StringZumBerechnen: value)
+//        b[key] = "\(zwischenergebnis)"
+//    }
+//    
+//    
+//    a = parser(stringZuParsen: ursprünglicherString, mitWelchemSeparator: "(")
+//    var key1 = 0
+//    for (var key, value) in enumerate(a) {
+//        println("key: \(key1)")
+//        println(key1)
+//        var aA = parser(stringZuParsen: value, mitWelchemSeparator: ")")
+//        if aA.count > 1 {
+//            aA[0] = "\(berechnung(StringZumBerechnen: aA[0]))"
+//        }
+//        println("aA: \(aA)")
+//        a.replace(aA, atIndex: key1)
+//        if aA.count > 1 {
+//            for number in 0..<aA.count {
+//                key1 += 1
+//            }
+//        } else {
+//            key1 += 1
+//        }
+//        println(key1)
+//        println("replace: \(a) \n \n")
+//    }
+//    ursprünglicherString = ""
+//    for (key, value) in enumerate(a) {
+//        ursprünglicherString += value
+//        println(ursprünglicherString)
+//    }
+//    
+//    return berechnung(StringZumBerechnen: ursprünglicherString)
+//    
+//}

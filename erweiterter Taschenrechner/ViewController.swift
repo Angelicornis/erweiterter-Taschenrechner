@@ -137,10 +137,19 @@ class ViewController: UIViewController {
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
 
+    @IBAction func aktionKlammerAuf() {
+        anzeigeWährendBerechnung += "("
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
+    
+    @IBAction func aktionKlammerZu() {
+        anzeigeWährendBerechnung += ")"
+        anzeigeEinheit.text = anzeigeWährendBerechnung
+    }
     
     @IBAction func aktionErgebnis() {
         
-        var ergebnis = berechnung(StringZumBerechnen: anzeigeWährendBerechnung)
+        var ergebnis = klammern(ursprünglicherString: anzeigeWährendBerechnung)
         ergebnissAnzeige.text = String(ergebnis)
         println("Das Ergebnis Lautet: \n \(ergebnis)\n")
     }    

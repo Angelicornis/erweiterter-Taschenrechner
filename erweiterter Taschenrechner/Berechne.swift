@@ -12,11 +12,6 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
     var arrayOfWords = parser(stringZuParsen: anzeigeWährendBerechnung, mitWelchemSeparator: "+")
     println("Ergebniss1: \n \(arrayOfWords)\n")
     
-    
-    
-    
-    
-    
     var arrayOfWords2 = [String]()
     var parameter: [Int] = []
     for (var index1, wort1) in enumerate(arrayOfWords) {
@@ -42,16 +37,6 @@ func berechnung(StringZumBerechnen anzeigeWährendBerechnung: String) -> Int {
         }
     }
     println("Die Parameter Lauten:\(parameter)")
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     //println ("String nach minus - \n \((arrayOfWords))\n")
