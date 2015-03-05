@@ -3,6 +3,8 @@
 import Cocoa
 import Foundation
 
+
+
 extension Array {
     mutating func addierValue(mitStartwert valueF: Int){
         var temp = 0

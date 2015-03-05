@@ -35,9 +35,12 @@ class ViewController: UIViewController {
     var anzeigeWährendBerechnung = ""
     var zahlenstring2 = ""
 
-    @IBOutlet weak var anzeigeEinheit: UILabel!
+    
+    @IBOutlet weak var anzeigeEinheit: UITextView!
+//    @IBOutlet weak var anzeigeEinheit: UILabel!
     @IBOutlet weak var ergebnissAnzeige: UILabel!
 
+    
     @IBAction func zahl1() {
         if theStringStartWithZero(welcherString: anzeigeWährendBerechnung) {
             anzeigeWährendBerechnung = ""
@@ -114,29 +117,44 @@ class ViewController: UIViewController {
     }
     
     @IBAction func aktionPlus() {
-        anzeigeWährendBerechnung += "+"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
+        if countElements(anzeigeWährendBerechnung) != 0 {
+            anzeigeWährendBerechnung += "+"
+            anzeigeEinheit.text = anzeigeWährendBerechnung
+        }
     }
 
     @IBAction func aktionMinus() {
-        anzeigeWährendBerechnung += "-"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
+        if countElements(anzeigeWährendBerechnung) != 0 {
+            anzeigeWährendBerechnung += "-"
+            anzeigeEinheit.text = anzeigeWährendBerechnung
+        }
     }
     
     @IBAction func aktionMal() {
-        anzeigeWährendBerechnung += "x"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
+        if countElements(anzeigeWährendBerechnung) != 0 {
+            anzeigeWährendBerechnung += "x"
+            anzeigeEinheit.text = anzeigeWährendBerechnung
+        }
     }
     
     @IBAction func aktionGeteilt() {
-        anzeigeWährendBerechnung += ":"
-        anzeigeEinheit.text = anzeigeWährendBerechnung
+        if countElements(anzeigeWährendBerechnung) != 0 {
+            anzeigeWährendBerechnung += ":"
+            anzeigeEinheit.text = anzeigeWährendBerechnung
+        }
     }
+    
     @IBAction func aktionLöscheLetzteZahl() {
         anzeigeWährendBerechnung = löscheLetzteEingabe(vonWelchemString: anzeigeWährendBerechnung)
         anzeigeEinheit.text = anzeigeWährendBerechnung
     }
 
+    @IBAction func aktionClear() {
+        anzeigeWährendBerechnung = ""
+        anzeigeEinheit.text = "\n"
+        ergebnissAnzeige.text = ""
+    }
+    
     @IBAction func aktionKlammerAuf() {
         anzeigeWährendBerechnung += "("
         anzeigeEinheit.text = anzeigeWährendBerechnung

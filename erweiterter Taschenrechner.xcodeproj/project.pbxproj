@@ -88,18 +88,14 @@
 		E2A0118C1A9A7E5C00D75C26 /* erweiterter Taschenrechner */ = {
 			isa = PBXGroup;
 			children = (
-				E207DBF91AA633E400A72385 /* Berechne.swift */,
+				E2D1D12B1AA8EF1D00462A30 /* Code */,
 				E2A0118F1A9A7E5C00D75C26 /* AppDelegate.swift */,
-				E2A7B85C1A9D2D4100531649 /* Extension : func.swift */,
 				E2A011911A9A7E5C00D75C26 /* ViewController.swift */,
-				E207DBFD1AA6391A00A72385 /* kleinereFunktionen.swift */,
-				E207DBFB1AA6341E00A72385 /* löscheLetzteEingabe.swift */,
 				E2A011931A9A7E5C00D75C26 /* Main.storyboard */,
 				E2A011961A9A7E5C00D75C26 /* Images.xcassets */,
 				E2A011981A9A7E5C00D75C26 /* LaunchScreen.xib */,
 				E2A0118D1A9A7E5C00D75C26 /* Supporting Files */,
 				E251E1951A9EAC6100EB98C0 /* MyPlayground.playground */,
-				E2C2BE4F1AA7A2240028CA7F /* Klammern.swift */,
 			);
 			path = "erweiterter Taschenrechner";
 			sourceTree = "<group>";
@@ -127,6 +123,18 @@
 				E2A011A41A9A7E5C00D75C26 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2D1D12B1AA8EF1D00462A30 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				E207DBF91AA633E400A72385 /* Berechne.swift */,
+				E2A7B85C1A9D2D4100531649 /* Extension : func.swift */,
+				E207DBFD1AA6391A00A72385 /* kleinereFunktionen.swift */,
+				E207DBFB1AA6341E00A72385 /* löscheLetzteEingabe.swift */,
+				E2C2BE4F1AA7A2240028CA7F /* Klammern.swift */,
+			);
+			name = Code;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
