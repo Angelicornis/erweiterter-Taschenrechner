@@ -18,7 +18,7 @@ func löscheLetzteEingabe (var vonWelchemString stringZumBearbeiten: String) ->S
     if stringZumBearbeitenArray.count == 0 {
         stringZumBearbeiten = "0"
         
-    } else if stringZumBearbeitenArray.valueOf(0) != "0" {
+    } else if stringZumBearbeitenArray[0] != "0" {
         stringZumBearbeitenArray.removeLast()
         
         if stringZumBearbeitenArray.count == 0 {

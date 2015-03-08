@@ -167,7 +167,8 @@ class ViewController: UIViewController {
     
     @IBAction func aktionErgebnis() {
         
-        var ergebnis = klammern(ursprünglicherString: anzeigeWährendBerechnung)
+        var tempErgebnis = berechnungKlammer(inString: anzeigeWährendBerechnung, separators: ["(", ")"])
+        var ergebnis = berechne(stringZumBerechnen: tempErgebnis)
         ergebnissAnzeige.text = String(ergebnis)
         println("Das Ergebnis Lautet: \n \(ergebnis)\n")
     }    
