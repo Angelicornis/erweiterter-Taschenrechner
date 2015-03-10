@@ -10,6 +10,44 @@ import Foundation
 
 
 extension String {
+    mutating func gibStringZurück (range: Range<Int>) ->String {
+        var string = ""
+        var temp: [Int] = []
+        var key = 0
+        for nummer in range {
+            temp.append(nummer)
+        }
+        return self.stringByPaddingToLength(temp.count, withString: "", startingAtIndex: temp[0])
+    }
+    mutating func insertString(string: String, atIndex: Int) {
+        var key = 0
+        var stringNeu: [String] = []
+        var string1 = ""
+        var endstring = ""
+        
+        
+        for c in self {
+            if key == atIndex {
+                stringNeu.append(string1)
+                stringNeu.append(string)
+                stringNeu.append(String(c))
+                string1 = ""
+                ++key
+                //                var string1 = string.
+            }else{
+                string1 += String(c)
+                ++key
+            }
+        }
+        stringNeu.append(string1)
+        if countElements(self) == atIndex {
+            stringNeu.append(string)
+        }
+        for (key, value) in enumerate(stringNeu) {
+            endstring = endstring + stringNeu[key]
+        }
+        self = endstring
+    }
     func lenght () -> Int {
         return countElements(self)
     }
@@ -26,7 +64,6 @@ extension String {
     mutating func removeRange(#range: Int) ->String {
         var temp = self
         var rangeIndex = advance(self.startIndex, 0)
-        range
         for nummer in 0..<range {
             temp.removeAtIndex(rangeIndex)
         }
@@ -38,6 +75,7 @@ extension String {
         let endIndex = advance(startIndex, range.endIndex - range.startIndex)
         return Range<String.Index>(start: startIndex, end: endIndex)
     }
+
 }
 func componentsSeparatetByStrings(var inString stringToParse: String, separators separatoren: [Character])
     ->(numbers: [String], parameter: [String]) {

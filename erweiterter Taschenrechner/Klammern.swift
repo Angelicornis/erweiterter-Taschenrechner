@@ -8,11 +8,12 @@
 
 import Foundation
 
-func berechnungKlammer (var inString stringToParse: String, separators separatoren: [Character])
-    ->String {
-        //FIXME: Klammern nach einer Klammer führt zu einem Fehler
-        println("Startstring: \(stringToParse)")
-        println("### Klammer start")
+func berechnungKlammerII (var inString stringToParse: String, separators separatoren: [Character])
+    ->(String,Bool) {
+        var description = false
+        
+        if description {println("Startstring: \n \(stringToParse)")}
+        
         var ursprungsString = stringToParse
         var StringAsArray: [String] = []
         var place: [Int] = []
@@ -22,68 +23,87 @@ func berechnungKlammer (var inString stringToParse: String, separators separator
         var anzahlDerKlammerAuf = 0
         var positionKlammerAuf = 0
         var startWertDerKlammern = 0
+        var anzahlDerKlammerZu = 0
+        var zählerStringArray = 0
+        var tempKey = 0
+        var StringAsArrayReverse:[String] = []
+        var längeDesStrings: [Int] = []
+        var stringVorDerKlammer = ""
         /*
+        //MARK: Auflösung der Klammer auf
         Auflösung der Klammer
         Von Klammer auf bis Ende des Strings
         Speichern von jeder Klammer auf bis Ende in einem Array
         */
-        for (var keyy, value) in enumerate(stringToParse) {
-            if value == "(" && anzahlDerKlammerAuf == positionKlammerAuf {
+        ende: for (var keyy, var value) in enumerate(stringToParse) {
+            if anzahlDerKlammerAuf == anzahlDerKlammerZu && anzahlDerKlammerAuf != 0 && anzahlDerKlammerZu != 0{
+                break ende
+            }else if value == "(" {
+                if anzahlDerKlammerAuf == 0 {
+                    stringVorDerKlammer = stringToParse.gibStringZurück(0...key-1)
+                }
+                //                println("String vor (: \n \(StringAsArray)")
                 stringToParse.removeRange(stringToParse.convertRange(0...key))
                 StringAsArray.append(stringToParse)
-                place.append(key)
+                if StringAsArray.count == 1 {
+                    place.append(key)
+                } else {
+                    key = place[tempKey - 1] + key + 1
+                    place.append(key)
+                }
                 key = 0
-                //                println("Case Sep 0 \n String: \(StringAsArray) \n key: \(place) \n ortDerKlammer: \(ortDerKlammer)")
+                ++anzahlDerKlammerAuf
+                ++tempKey
+                //                println("String nach (: \n \(StringAsArray) \n")
                 
-            }else {
+            }else if value == ")" {
+                var positionDerKlammerZu = 0
+                StringAsArrayReverse = StringAsArray.reverse()
+                //                println("String vor ): \n \(StringAsArrayReverse) \n")
+                var stringArray = StringAsArrayReverse[zählerStringArray]
+                outer: for (key2, char) in enumerate(stringArray) {
+                    if char == ")" && anzahlDerKlammerZu == positionDerKlammerZu {
+
+                        StringAsArrayReverse[anzahlDerKlammerZu] = stringArray.stringByPaddingToLength(key2, withString: "", startingAtIndex: 0)
+                        längeDesStrings.append(StringAsArrayReverse[anzahlDerKlammerZu].lenght())
+                        anzahlDerKlammerZu += 1
+                        break outer
+                    } else if char == ")" {
+                        ++positionDerKlammerZu
+                    }
+                }
+                ++zählerStringArray
+                StringAsArray = StringAsArrayReverse.reverse()
+            }else{
                 key += 1
             }
         }
-        startWertDerKlammern = place[0]
-        //        println("\nNach dem 1. Switchen \n String: \(StringAsArray)\n")
-        /* -->
-        Nach dem 1. Switchen
-        String: [4x(6+4)x2), 6+4)x2)]
-        key: [4, 2]
-        */
-        //        println("\n")
-        var positionDerKlammerZu = 0
-        var anzahlDerKlammerZu = 0
-        var positionDerKlammer = 0
-        var StringAsArrayReverse = StringAsArray.reverse()
-        for (key, stringArray) in enumerate(StringAsArrayReverse) {
-            for (key2, value) in enumerate(stringArray) {
-                if value == ")" && anzahlDerKlammerZu == positionDerKlammerZu {
-                    //                    println(StringAsArrayReverse)
-                    key
-                    StringAsArrayReverse[positionDerKlammer] = stringArray.stringByPaddingToLength(key2, withString: "", startingAtIndex: 0)
-                    //                    println(StringAsArrayReverse)
-                    //                    println(positionDerKlammer)
-                    anzahlDerKlammerZu += 1
-                    break
-                } else if value == ")" {
-                    positionDerKlammer += 1
-                }
-            }
-        }
-        StringAsArray = StringAsArrayReverse
-        println("String nach dem Parsen: \n \(StringAsArray) \n")
-        /*
-        [4x2, 6x(4x2), 4x(6x(4x2)]
-        ortDerKlammer:
-        [4, 7, 10]
-        */
+        var ursprungsStringAlsArray = StringAsArray
+        ursprungsStringAlsArray.insert(stringVorDerKlammer, atIndex: 0)
+        if description {println("String nach dem Parsen: \n \(StringAsArray)")}
+        //        println("String nach dem Parsen: \n \(StringAsArray) \nplace: \(place) \nlänge \(längeDesStrings.reverse())")
         
+        
+        
+        
+        
+        
+        /* Das berechnete Ergebnis in den Ursprungsstring einfügen
+        Berechnung der einzelnen Klammer
+        */
+        if description {println("\n\nStart: Berechnung\n")}
         var zähler = 0
         var tempZwischenergebnis = ""
         var länge = 0
+        if description {println("Array: \(StringAsArrayReverse)")}
         for (key, value) in enumerate(StringAsArrayReverse) {
+            if description {println("Value: \(value)")}
             if zähler == 0 {
                 tempZwischenergebnis = "\(berechne(stringZumBerechnen: value))"
+                StringAsArrayReverse[0] = tempZwischenergebnis
                 länge = value.lenght()
                 zähler += 1
             } else {
-                println("Start: \(StringAsArray[zähler])")
                 var ortDerKlammer = 0
                 for c in value {
                     ++ortDerKlammer
@@ -92,29 +112,55 @@ func berechnungKlammer (var inString stringToParse: String, separators separator
                     }
                 }
                 --ortDerKlammer
-                var endIndex = StringAsArray[zähler].lenght() - 1
-                //FIXME: Alles Nach der Klammer wird abgeschnitten
+                if description {println("Aktueller String: \(StringAsArray[zähler])")}
+                if description {println("Startindex: \(ortDerKlammer)")}
+                var endIndex = längeDesStrings[zähler - 1] + ortDerKlammer + 1
+                if description {println("Endindex \(endIndex)")}
                 
-                println(StringAsArray[zähler])
-                StringAsArray[zähler].removeRange(StringAsArray[zähler].convertRange(ortDerKlammer...endIndex))
-                println(StringAsArray[zähler])
+                StringAsArrayReverse[zähler].removeRange(StringAsArrayReverse[zähler].convertRange(ortDerKlammer...endIndex))
+                var tempString = StringAsArrayReverse[zähler]
+                tempString.insertString(tempZwischenergebnis, atIndex: ortDerKlammer)
+                StringAsArrayReverse[zähler] = tempString
                 
-                StringAsArray[zähler] = StringAsArray[zähler] + tempZwischenergebnis
-                tempZwischenergebnis = String(berechne(stringZumBerechnen: StringAsArray[zähler]))
-                println(StringAsArray[zähler])
-                println(StringAsArray)
+                tempZwischenergebnis = String(berechne(stringZumBerechnen: StringAsArrayReverse[zähler]))
+                StringAsArrayReverse[zähler] = tempZwischenergebnis
+                
                 zähler += 1
             }
+            if description {println("Zwischenergebnis: \(tempZwischenergebnis)\n")}
         }
         
         
+        place.reverse()
+
         
-        
-        
-        /* Das berechnete Ergebnis in den Ursprungsstring einfügen*/
-        ursprungsString.removeRange(ursprungsString.convertRange(startWertDerKlammern..<ursprungsString.lenght()))
-        ursprungsString = ursprungsString + tempZwischenergebnis
-        
-        return ursprungsString
+        var tempCounterFürEinsetzen = 1
+        var längeDesStringsOriginal = längeDesStrings
+        for (key, value) in enumerate(StringAsArrayReverse) {
+            var placeAktuellReverse = place.reverse()[key]
+            var längeDesStringsAktuell = längeDesStrings[key] + placeAktuellReverse
+            ursprungsString.removeRange(ursprungsString.convertRange(placeAktuellReverse...längeDesStringsAktuell + 1))
+            ursprungsString.insertString(StringAsArrayReverse[key], atIndex: placeAktuellReverse)
+            if key + 1 != StringAsArrayReverse.count {
+                längeDesStrings[key + 1] = längeDesStrings[key + 1] - längeDesStringsOriginal[key] + StringAsArrayReverse[key].lenght() - 2
+            }
+        }
+        if anzahlDerKlammerAuf == 0 {
+            return (ursprungsString, true)
+        } else {
+            return (ursprungsString, false)
+        }
+}
+
+func berechnungKlammer ( inString stringToParse: String, separators separatoren: [Character])
+    ->String  {
+        var (temp, status) = (stringToParse, false)
+        outer: for nummer in 0...100 {
+            (temp, status) = berechnungKlammerII(inString: temp, separators: separatoren)
+            if status {
+                break outer
+            }
+        }
+        return temp
 }
 

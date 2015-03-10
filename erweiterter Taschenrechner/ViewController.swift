@@ -173,4 +173,3 @@ class ViewController: UIViewController {
         println("Das Ergebnis Lautet: \n \(ergebnis)\n")
     }    
 }
-
