@@ -40,7 +40,7 @@ extension String {
             }
         }
         stringNeu.append(string1)
-        if countElements(self) == atIndex {
+        if count(self) == atIndex {
             stringNeu.append(string)
         }
         for (key, value) in enumerate(stringNeu) {
@@ -49,7 +49,7 @@ extension String {
         self = endstring
     }
     func lenght () -> Int {
-        return countElements(self)
+        return count(self)
     }
     
     func isInString(thisChar char: Character) ->Bool {

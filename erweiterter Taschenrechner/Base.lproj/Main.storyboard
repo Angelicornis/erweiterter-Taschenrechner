@@ -252,8 +252,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ER8-6d-ICZ">
+                                <rect key="frame" x="297" y="167" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="vrb-0i-mRT" firstAttribute="leading" secondItem="vnr-FQ-Yoh" secondAttribute="leading" id="1vJ-yb-VCe"/>
                             <constraint firstItem="ZBk-n6-yLL" firstAttribute="baseline" secondItem="84f-7M-yyh" secondAttribute="firstBaseline" id="1zB-Ss-rFY"/>
@@ -358,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="367.5" y="272.5"/>
+            <point key="canvasLocation" x="-492.5" y="272.5"/>
         </scene>
     </scenes>
 </document>
